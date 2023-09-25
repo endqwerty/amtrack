@@ -1,0 +1,27 @@
+{
+  "name": "amtrack",
+  "version": "1.0.0",
+  "description": "validation of amtrack",
+  "scripts": {
+    "test": "npx cypress open"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/endqwerty/amtrack.git"
+  },
+  "author": "Daniel Yang",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/endqwerty/amtrack/issues"
+  },
+  "homepage": "https://github.com/endqwerty/amtrack#readme",
+  "dependencies": {
+    "cypress": "^13.2.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.50.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-prettier": "^5.0.0",
+    "prettier": "^3.0.3"
+  }
+}
