@@ -1,6 +1,9 @@
 describe('template spec', function () {
-  it('passes', function () {
+  before(function () {
     cy.visit('/')
+    cy.findByRole('button', { name: 'Allow All' }).click()
+  })
+  it('passes', function () {
     cy.findByRole('combobox', { name: 'From' })
   })
 })
