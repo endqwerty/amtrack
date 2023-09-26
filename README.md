@@ -16,3 +16,7 @@ Plugins and settings used in Eslint:
 
 ### Locators
 - Use accessibility locators
+# Issues with Amtrak
+
+- not all of the elements have test ids
+- when using `experimentalModifyObstructiveThirdPartyCode` && `experimentalSourceRewriting` the website causes Cypress to crash due to non-string stream

@@ -13,8 +13,8 @@ describe('template spec', function () {
     cy.url().should('contain', '/home.html')
   })
   it('passes', function () {
-    const today = DateTime.now().plus({ days: 3 })
-    const threeDaysFromNow = DateTime.now().plus({ days: 6 })
+    const today = DateTime.now().plus({ days: 1 })
+    const threeDaysFromNow = DateTime.now().plus({ days: 4 })
     cy.log(today.toLocaleString())
     cy.log(threeDaysFromNow.toLocaleString())
     cy.configureCypressTestingLibrary({ testIdAttribute: 'amt-auto-test-id' })
