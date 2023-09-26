@@ -14,12 +14,16 @@ describe('template spec', function () {
   })
   it('passes', function () {
     const today = DateTime.now().plus({ days: 3 })
-    const threeDaysFromNow = today.plus({ days: 3 })
+    const threeDaysFromNow = DateTime.now().plus({ days: 6 })
+    cy.log(today.toLocaleString())
+    cy.log(threeDaysFromNow.toLocaleString())
     cy.configureCypressTestingLibrary({ testIdAttribute: 'amt-auto-test-id' })
     cy.findAllByTestId('fare-finder-from-station-field-page').type('NYP')
     cy.findAllByTestId('fare-finder-to-station-field-page').type('WAS')
+    // amtrack has inconsistent behavior with buttons and incomplete test-ids
+    // locators below will use accessibility locators with findByRole
     cy.findByRole('textbox', { name: 'Depart Date' }).click()
-    cy.findByTestId('fare-finder-depart-date-oneway').type(
+    cy.findByRole('textbox', { name: 'Depart Date' }).type(
       today.toLocaleString()
     )
     cy.findByRole('button', { name: 'Done' }).click()
