@@ -25,6 +25,10 @@ The automation does not successfully submit the search result and always results
 * tried to click on calendar dates instead of typing a string
   * assumption is that a date string being typed out doesn't get saved to the payload object
 
+### Google Flights
+
+I've added a second test case for Google Flights that works consistently. It is much simpler and doesn't additional refactoring done to include reusable locators and such.
+
 ### Stuff I googled
 
 I didn't keep a good list of links, but I generally browsed for thse subjects. Setting up the project and writing the test code was done by myself as I'm very familiar with setting up a Cypress project with basic linting/prettier/configs.
@@ -40,7 +44,9 @@ I didn't keep a good list of links, but I generally browsed for thse subjects. S
 
 #### Page/Component Object Library
 
-Locators are hard coded into the test files. They can be extracted into page object libraries. Depending what frameworks the project uses, a component object library could be viable. Component object libraries export the locators used in the component unit tests and allow the E2E tests to reuse the same locators. Teams can then just manage just their components and the locators inside of their components.
+Locators and functions are in two files. This works at this scale of 1 developer, but needs to be improved upon for scaling to more devlopers.
+
+Depending what frameworks the project uses, a component object library could be viable. Component object libraries export the locators used in the component unit tests and allow the E2E tests to reuse the same locators. Teams can then just manage just their components and the locators inside of their components. There are some downsides to this where locators can feel brittle due to the need for very strict self control in keeping locators up-to-date
 
 #### Session Caching
 
@@ -67,9 +73,14 @@ Other things are:
   - should use today + 1 as the starting day to be more sure that there are available trains
   - on a prod environment, ideally this checks the db for a valid route before performing this search
   - on a dev environment, the db should be loaded up with preset routes to ensure they exist
-  - CI/CD improvements
-    - store screenshots/videos on error
-    - reporting
+- CI/CD improvements
+  - store screenshots/videos on error
+  - reporting
+  - increase parallelization and make it dynamic
+- scalability as test cases increase
+  - cypress has things like spec prioritization
+  - weighting based on critical importance or known failure areas
+- quicker tests for local development
 
 
 ## Development
