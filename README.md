@@ -1,4 +1,6 @@
 # Amtrak
+[![amtrak](https://img.shields.io/endpoint?url=https://cloud.cypress.io/badge/detailed/wrhdxi&style=flat&logo=cypress)](https://cloud.cypress.io/projects/wrhdxi/runs)
+
 This repo contains tests validating searching for a ticket with Amtrak.com from NYP to WAS with specific date parameters. Then verify the parameters are saved when utilizing the browser's "back" functionality.
 
 ## Notes for the reviewers
