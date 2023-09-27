@@ -27,7 +27,7 @@ const setReturnDate = function (date) {
 const searchForTrains = function () {
   // button is disabled when selecting dates
   // clicking too fast will someitmes not trigger a search
-  findTrainsButton().should('not.be.disabled')
+  findTrainsButton().should('be.enabled')
   findTrainsButton().click()
   findTrainsButton().click() // second click due to errors not showing up until a user actions has occured
 }

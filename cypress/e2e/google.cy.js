@@ -28,6 +28,7 @@ describe('search for flights', function () {
           DateTime.DATE_MED_WITH_WEEKDAY
         )}{enter}`
       )
+      cy.findByRole('button', { name: /Done/ }).should('be.enabled')
       cy.findByRole('button', { name: /Done/ }).click()
       cy.findByRole('button', { name: /Search/ }).click()
     })
