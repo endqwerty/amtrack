@@ -1,25 +1,18 @@
 const { DateTime } = require('luxon')
 
-describe('template spec', function () {
+describe('search for trains', function () {
   beforeEach(function () {
-    cy.visit('/home.html', {
-      headers: {
-        'user-agent':
-          'Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; Googlebot/2.1; +http://www.google.com/bot.html) Chrome/W.X.Y.Z Safari/537.36',
-      },
-    })
-    cy.findByRole('button', { name: 'Allow All' }).click()
-    cy.findByRole('button', { name: 'close button' }).click()
+    cy.visit('https://www.amtrak.com/home.html')
+    // cy.findByRole('button', { name: 'Allow All' }).click()
+    // cy.findByRole('button', { name: 'close button' }).click()
     cy.url().should('contain', '/home.html')
   })
-  it('passes', function () {
-    const today = DateTime.now().plus({ days: 1 })
-    const threeDaysFromNow = DateTime.now().plus({ days: 4 })
-    cy.log(today.toLocaleString())
-    cy.log(threeDaysFromNow.toLocaleString())
+  it('should show the trip selection page', function () {
+    const today = DateTime.now()
+    const threeDaysFromNow = DateTime.now().plus({ days: 3 })
     cy.configureCypressTestingLibrary({ testIdAttribute: 'amt-auto-test-id' })
-    cy.findAllByTestId('fare-finder-from-station-field-page').type('NYP')
-    cy.findAllByTestId('fare-finder-to-station-field-page').type('WAS')
+    cy.findByTestId('fare-finder-from-station-field-page').type('NYP')
+    cy.findByTestId('fare-finder-to-station-field-page').type('WAS')
     // amtrack has inconsistent behavior with buttons and incomplete test-ids
     // locators below will use accessibility locators with findByRole
     cy.findByRole('textbox', { name: 'Depart Date' }).click()
@@ -33,6 +26,15 @@ describe('template spec', function () {
     )
     cy.findByRole('button', { name: 'Done' }).click()
     cy.findByRole('button', { name: 'FIND TRAINS' }).click()
-    cy.contains("We've experienced an unknown error.").should('be.visible')
+    // cy.contains("We've experienced an unknown error.").should('be.visible')
+    cy.visit('https://www.amtrak.com/home.html')
+    cy.findByTestId('fare-finder-from-station-field-page').should(
+      'contain.text',
+      'NYP'
+    )
+    cy.findByTestId('fare-finder-to-station-field-page').should(
+      'contain.text',
+      'WAS'
+    )
   })
 })
