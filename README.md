@@ -65,6 +65,9 @@ Other things are:
   - should use today + 1 as the starting day to be more sure that there are available trains
   - on a prod environment, ideally this checks the db for a valid route before performing this search
   - on a dev environment, the db should be loaded up with preset routes to ensure they exist
+  - CI/CD improvements
+    - store screenshots/videos on error
+    - reporting
 
 
 ## Development
