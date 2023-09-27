@@ -20,13 +20,19 @@ describe('search for flights', function () {
       cy.findByRole('option', { name: 'Tokyo, Japan' }).click()
       cy.findByRole('textbox', { name: 'Departure' }).click()
       cy.findByRole('textbox', { name: 'Departure' }).type(
-        `${today.toLocaleString(DateTime.DATE_MED_WITH_WEEKDAY)}{enter}`
+        `${today.toLocaleString({
+          weekday: 'short',
+          month: 'short',
+          day: '2-digit',
+        })}{enter}`
       )
       cy.findByRole('textbox', { name: 'Return' }).click()
       cy.findByRole('textbox', { name: 'Return' }).type(
-        `${threeDaysFromNow.toLocaleString(
-          DateTime.DATE_MED_WITH_WEEKDAY
-        )}{enter}`
+        `${threeDaysFromNow.toLocaleString({
+          weekday: 'short',
+          month: 'short',
+          day: '2-digit',
+        })}{enter}`
       )
       cy.findByRole('button', { name: /Done/ }).should('be.enabled')
       cy.findByRole('button', { name: /Done/ }).click()
