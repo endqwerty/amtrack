@@ -17,12 +17,16 @@ describe('search for flights', function () {
       )
       cy.findAllByRole('combobox', { name: /Where else/ }).clear()
       cy.findAllByRole('combobox', { name: /Where else/ }).type('Seattle')
+      cy.findByRole('option', { name: 'Seattle, Washington' }).should(
+        'be.visible'
+      )
       cy.findByRole('option', { name: 'Seattle, Washington' }).click()
       cy.get('@whereTo').click()
       cy.findAllByRole('dialog', { name: /Enter your destination/ }).should(
         'be.visible'
       )
       cy.findAllByRole('combobox', { name: /Where else/ }).type('Tokyo')
+      cy.findByRole('option', { name: 'Tokyo, Japan' }).should('be.visible')
       cy.findByRole('option', { name: 'Tokyo, Japan' }).click()
       cy.findByRole('textbox', { name: 'Departure' }).click()
       cy.findByRole('textbox', { name: 'Departure' }).type(
